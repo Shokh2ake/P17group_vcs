@@ -1,0 +1,118 @@
+1-javob
+
+select actor_id, first_name, last_name,
+array (select film_id from film_actor
+where actor_id) as film_ids
+from actor;
+
+2-javob
+
+create function function_name(start_str text)
+returns table (first_name text, last_name text)
+language plpgsql
+as
+$$
+begin
+  return query
+    select first_name, last_name
+    from actor
+    where first_name like start_str || '%ali%'
+       or last_name like start_str || '%ali%';
+end;
+$$;
+
+select * from function_name('ali');
+
+
+3-javob
+
+
+create function exam_table(limit integer default 10)
+returns table (id integer, name varchar)
+language plpgsql
+as
+$$
+begin
+  return query
+    select id, name
+    from courses
+    order by id
+    LIMIT limit;
+end;
+$$;
+
+SELECT * FROM exam_table();
+SELECT * FROM exam_table(5);
+
+terminalda yozgan komandalar
+create database exam
+sudo pg_restore -U postgres -p 5432 -h localhost -d exam exam.tar
+
+
+4-javob
+
+
+set timezone = 'Asia/Tashkent';
+
+create table users (
+  id serial primary key ,
+  name varchar(255),
+  address varchar(255)
+);
+
+insert into users (name, email, address)
+select
+'User ' || generate_series, 'user' || generate_series , 'Address ' || generate_series
+from generate_series(1, 100000);
+
+create table products (
+  id serial primary key ,
+  name varchar(255),
+  price numeric(10, 2),
+  description text
+);
+
+insert into products (name, price, description)
+select
+'Product ' || generate_series,  (random() * 1000)::numeric(10, 2),
+'Description ' || generate_series
+from generate_series(1, 1000000);
+
+create table orders (
+  id serial primary key ,
+  user_id integer,
+  product_id integer,
+  quantity integer,
+  order_date date
+);
+
+insert into orders (user_id, product_id, quantity, order_date)
+select
+(random() * 100000 + 1)::integer, (random() * 1000000 + 1)::integer,
+(random() * 10 + 1)::integer, current_timestamp - (random() * 365)::integer
+from generate_series(1, 500000);
+
+
+5-javob
+
+create index idx_courses_name ON courses (name);
+
+alter table students add column course_count integer default 0;
+
+create function update_course_count()
+returns trigger
+language plpgsql
+as $$
+begin
+  update students
+  set course_count = course_count + 1
+  where id = NEW.student_id;
+
+  return NEW;
+end ;
+$$;
+
+create trigger trg_student_course_insert
+after insert on student_course
+for each row
+execute function update_course_count();

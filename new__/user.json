@@ -1,0 +1,26 @@
+[
+   {
+      "id": "132",
+      "fullname": "shokh",
+      "card_number": "9860 4059",
+      "balance": 100000,
+      "email": "shokhake6690@gmail.com",
+      "password": "123"
+   },
+   {
+      "id": "506",
+      "fullname": "a",
+      "card_number": "6262 0846",
+      "balance": 100000,
+      "email": "shokhake6690@gmail.com",
+      "password": "1234"
+   },
+   {
+      "id": "267",
+      "fullname": "a",
+      "card_number": "6262 9806",
+      "balance": 100000,
+      "email": "shokhake6690@gmail.com",
+      "password": "123"
+   }
+]

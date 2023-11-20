@@ -1,0 +1,52 @@
+[
+   {
+      "id": 1,
+      "fullname": "AShokh",
+      "email": "lkans@gmail.com",
+      "password": "12345",
+      "balance": null,
+      "card_number": null,
+      "created_at": null,
+      "updated_at": null
+   },
+   {
+      "id": 2,
+      "fullname": "josd",
+      "email": "ksjn@gmail.com",
+      "password": "1234",
+      "balance": null,
+      "card_number": null,
+      "created_at": null,
+      "updated_at": null
+   },
+   {
+      "id": 3,
+      "fullname": "cdsjhi",
+      "email": "komil@gmail.com",
+      "password": "12345",
+      "balance": null,
+      "card_number": null,
+      "created_at": null,
+      "updated_at": null
+   },
+   {
+      "id": 4,
+      "fullname": "oij",
+      "email": "oiujh",
+      "password": "oij",
+      "balance": 50000,
+      "card_number": "6262990457389160",
+      "created_at": null,
+      "updated_at": null
+   },
+   {
+      "id": 5,
+      "fullname": "Shokh",
+      "email": "sv@gmail.com",
+      "password": "123456",
+      "balance": 50000,
+      "card_number": "6262536124848126",
+      "created_at": null,
+      "updated_at": null
+   }
+]
